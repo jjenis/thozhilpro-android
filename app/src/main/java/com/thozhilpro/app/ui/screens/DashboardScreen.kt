@@ -181,8 +181,8 @@ fun BottomNavBar(navController: NavController, currentRoute: String) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.Menu, "More") },
             label = { Text("More", fontSize = 11.sp) },
-            selected = currentRoute == Routes.SETTINGS || currentRoute == Routes.PROFILE,
-            onClick = { navController.navigate(Routes.PROFILE) }
+            selected = currentRoute == Routes.MORE,
+            onClick = { navController.navigate(Routes.MORE) }
         )
     }
 }

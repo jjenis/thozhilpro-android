@@ -61,6 +61,15 @@ interface ApiService {
     @DELETE("customers/{id}")
     suspend fun deleteCustomer(@Path("id") id: Long): Response<Unit>
 
+    @GET("customers/{id}/detail")
+    suspend fun getCustomerDetail(@Path("id") id: Long): Response<CustomerDetail>
+
+    @POST("customers/settle")
+    suspend fun settleBills(@Body request: SettlementRequest): Response<SettlementResponse>
+
+    @GET("customers/delayed-payments")
+    suspend fun getDelayedPaymentCustomers(): Response<List<Customer>>
+
     // Suppliers
     @GET("suppliers")
     suspend fun getSuppliers(): Response<List<Supplier>>

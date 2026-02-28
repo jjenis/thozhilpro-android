@@ -101,6 +101,82 @@ data class CreateCustomerRequest(
     val previousBalance: BigDecimal? = BigDecimal.ZERO
 )
 
+data class UpdateCustomerRequest(
+    val firstName: String,
+    val lastName: String,
+    val phone: String,
+    val email: String? = null,
+    val address: String? = null,
+    val idType: String? = null,
+    val idNumber: String? = null
+)
+
+data class CustomerDetail(
+    val id: Long,
+    val firstName: String,
+    val lastName: String,
+    val email: String?,
+    val phone: String?,
+    val address: String?,
+    val idType: String?,
+    val idNumber: String?,
+    val previousBalance: BigDecimal = BigDecimal.ZERO,
+    val totalPending: BigDecimal = BigDecimal.ZERO,
+    val totalSales: BigDecimal = BigDecimal.ZERO,
+    val bills: List<SaleBill> = emptyList(),
+    val hasDelayedPayments: Boolean = false,
+    val paymentDelayAlertDays: Int = 10
+) {
+    val fullName: String get() = "$firstName $lastName"
+    val totalDue: BigDecimal get() = totalPending.add(previousBalance)
+}
+
+data class SaleBill(
+    val id: Long,
+    val invoiceNumber: String?,
+    val saleDate: String?,
+    val totalAmount: BigDecimal = BigDecimal.ZERO,
+    val discountAmount: BigDecimal = BigDecimal.ZERO,
+    val paymentReceived: BigDecimal = BigDecimal.ZERO,
+    val balanceDue: BigDecimal = BigDecimal.ZERO,
+    val status: String?,
+    val paymentDelayed: Boolean = false,
+    val daysOverdue: Long = 0,
+    val lineItems: List<SaleBillLineItem> = emptyList()
+)
+
+data class SaleBillLineItem(
+    val itemName: String?,
+    val quantity: Int = 0,
+    val rate: BigDecimal = BigDecimal.ZERO,
+    val lineTotal: BigDecimal = BigDecimal.ZERO
+)
+
+data class SettlementRequest(
+    val customerId: Long,
+    val saleIds: List<Long> = emptyList(),
+    val paymentAmount: BigDecimal = BigDecimal.ZERO,
+    val discountAmount: BigDecimal = BigDecimal.ZERO,
+    val paymentMode: String = "CASH",
+    val description: String? = null,
+    val paymentDate: String? = null,
+    val againstPreviousBalance: Boolean = false
+)
+
+data class SettlementResponse(
+    val customerId: Long?,
+    val customerName: String?,
+    val settledSaleIds: List<Long>? = emptyList(),
+    val totalBillAmount: BigDecimal? = BigDecimal.ZERO,
+    val discountApplied: BigDecimal? = BigDecimal.ZERO,
+    val paymentReceived: BigDecimal? = BigDecimal.ZERO,
+    val remainingBalance: BigDecimal? = BigDecimal.ZERO,
+    val previousBalance: BigDecimal? = BigDecimal.ZERO,
+    val paymentId: Long?,
+    val message: String?,
+    val error: String? = null
+)
+
 // ===== SUPPLIER =====
 data class Supplier(
     val id: Long,

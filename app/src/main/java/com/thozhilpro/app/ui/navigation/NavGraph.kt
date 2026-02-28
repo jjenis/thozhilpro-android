@@ -22,6 +22,7 @@ object Routes {
     const val NOTIFICATIONS = "notifications"
     const val SETTINGS = "settings"
     const val PROFILE = "profile"
+    const val MORE = "more"
     const val SUBSCRIPTION_EXPIRED = "subscription_expired"
 }
 
@@ -93,6 +94,9 @@ fun NavGraph(
         }
         composable(Routes.SETTINGS) {
             SettingsScreen(navController = navController)
+        }
+        composable(Routes.MORE) {
+            MoreScreen(navController = navController)
         }
         composable(Routes.PROFILE) {
             ProfileScreen(
