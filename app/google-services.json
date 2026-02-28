@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55513661517",
+    "project_id": "thozhilpro",
+    "storage_bucket": "thozhilpro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55513661517:android:9fca123984fdc2e54d5c04",
+        "android_client_info": {
+          "package_name": "com.thozhilpro.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbIxu6Y3qQKosguhCUKPT06NTCjF9B4wY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

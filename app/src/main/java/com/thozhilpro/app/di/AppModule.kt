@@ -32,8 +32,8 @@ import javax.inject.Singleton
 object AppModule {
 
     // Change this to your server IP/URL
-    //private const val BASE_URL = "http://10.0.2.2:8080/api/"
-    private const val BASE_URL = "https://www.thozhilpro.com/api/"
+    private const val BASE_URL = "http://10.0.2.2:8080/api/"
+    //private const val BASE_URL = "https://www.thozhilpro.com/api/"
 
     @Provides
     @Singleton
